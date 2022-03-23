@@ -5,4 +5,5 @@ function main(){
     element.innerHTML += MarkdownToHtml.parse(Intro_1_Text);
     element.innerHTML += MarkdownToHtml.parse(Intro_2_Text);
     element.innerHTML += MarkdownToHtml.parse(Intro_3_Text);
+    element.innerHTML += MarkdownToHtml.parse(Intro_4_Text);
 }
