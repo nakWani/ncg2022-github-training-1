@@ -258,3 +258,19 @@ http://aaaaa
         2 rows in set (0.08 sec)
         ```
 
+        * docker compose停止
+        ```
+        $ ls # 停止したいdocker-compose.yamlがあるか確認
+        
+        $ docker-compose stop
+
+        # 停止かつ削除する場合
+        $ docker-compose down
+        ```
+
+
+3. 課題
+
+30分くらい？
+
+(T.B.D)
