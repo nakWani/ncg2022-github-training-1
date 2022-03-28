@@ -7,6 +7,8 @@ Docker、Docker-composeの使用方法、案件でどのように運用されて
 http://aaaaa
 
 
+## 講義
+
 1. Dockerを動かす
 
     作業ディレクトリに移動
@@ -38,7 +40,8 @@ http://aaaaa
 
         エラーが出ない場合、 http://localhost:8080 にアクセスできるか確認する
 
-        ```
+
+
 
     2. Dockerの便利コマンド
         * 起動中のコンテナ一覧、詳細を表示
@@ -177,7 +180,7 @@ http://aaaaa
               $ docker run --name myphpserver --rm -d -p 8080:80 myphpserver:centos7-ryokaoishi
               ```
 
-              コマンド実行後 http://localhost:8080/test.php にアクセス
+              コマンド実行後 http://localhost:8080/index.php にアクセス
 
 
 
@@ -259,6 +262,7 @@ http://aaaaa
         ```
 
         * docker compose停止
+
         ```
         $ ls # 停止したいdocker-compose.yamlがあるか確認
         
@@ -268,9 +272,26 @@ http://aaaaa
         $ docker-compose down
         ```
 
+## 課題
 
-3. 課題
+1. 顧客から、Pytorchを動かせるコンテナをDocker Composeで作成してほしいと依頼
 
-30分くらい？
+    ＜条件＞
 
-(T.B.D)
+    ```$ docker-compose exec torch bash```  が実行できること
+
+    ```$ docker-compose exec torch python3 train.py``` が実行でき、最後にSUCCESS!!!と出力されること
+
+    ncg2022-github-training-x/docker/docker-task/torch内の２つのファイルを修正する
+    * Dockerfile
+    * Docker-compose.yaml
+
+2. 好きなDockerイメージを作成する
+
+
+## うまく動かないとき
+
+sudo を付けてみる
+```
+$ sudo docker ps
+```
