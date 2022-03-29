@@ -4,8 +4,7 @@ Docker、Docker-composeの使用方法、案件でどのように運用されて
 
 ここではコマンドをメインに取り扱うものとする。スライド資料はコ <!-- ↑ --> コ↓
 
-http://aaaaa
-
+https://docs.google.com/presentation/d/1KuyB4PybKUFf2K1E0trbTeiEXR5at_-h/edit?usp=sharing&ouid=113382210091580383365&rtpof=true&sd=true
 
 ## 講義
 
