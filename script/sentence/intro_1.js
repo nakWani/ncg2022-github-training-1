@@ -10,9 +10,9 @@ Here is some example **formatting** in _Markdown_.  \n\
 \n\
 The following JavaScript will transform this content to clean HTML.  \n\
 # あなたのポケモンカードのやりたさに関する所感 (10行) \n\
-hoge1 \n\
-hoge2 \n\
-hoge3 \n\
+foo1 \n\
+foo2 \n\
+foo3 \n\
 4 \n\
 5 \n\
 6 \n\
