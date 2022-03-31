@@ -18,25 +18,25 @@ https://docs.google.com/presentation/d/1KuyB4PybKUFf2K1E0trbTeiEXR5at_-h/edit?us
     ```
 
 
-    1. docker経由でngiuxの最新版を起動する
+    1. docker経由でnginxの最新版を起動する
 
         ```
 
         $ cd ncg2022-github-training-1/docker
-        $ docker run --name ngiux-server --rm -d -p 8080:80 nginx:latest
+        $ docker run --name nginx-server --rm -d -p 8080:80 nginx:latest
         ```
 
-        * --name: コンテナ名（重複できない）
+        * `--name`: コンテナ名（重複できない）
 
-        * --rm: コンテナ停止後、自動的にコンテナを削除する
+        * `--rm`: コンテナ停止後、自動的にコンテナを削除する
 
-        * -d: バックグラウンドで起動する
+        * `-d`: バックグラウンドで起動する
 
-        * -p: ポートフォワーディング（外部との通信は8080番、内部は80番で通信）
+        * `-p`: ポートフォワーディング（外部との通信は8080番、内部は80番で通信）
 
-        * nginx:latest: <image_name>:<tag>を指定、導入したいコンテナをググって確認する
+        * `nginx:latest`: <image_name>:<tag>を指定、導入したいコンテナをググって確認する
 
-        * Tag: latestは最新版
+        * `Tag`: latestは最新版
 
         エラーが出ない場合、 http://localhost:8080 にアクセスできるか確認する
 
@@ -48,7 +48,7 @@ https://docs.google.com/presentation/d/1KuyB4PybKUFf2K1E0trbTeiEXR5at_-h/edit?us
         ```
         $ docker ps
         CONTAINER ID   IMAGE                  COMMAND                          CREATED              STATUS          PORTS                            NAMES
-        6c254a79a5db   nginx:latest           “/docker-entrypoint.…”        16 minutes ago   Up 16 minutes   0.0.0.0:8080->80/tcp     ngiux-server
+        6c254a79a5db   nginx:latest           "/docker-entrypoint.…"        16 minutes ago   Up 16 minutes   0.0.0.0:8080->80/tcp     nginx-server
         5c60315a9b80   openvino/cvat_ui       "/docker-entrypoint.…"   10 months ago    Up 5 weeks       80/tcp                              cvat_ui
         b5602199c251   openvino/cvat_server   "/usr/bin/supervisord"  10 months ago    Up 5 weeks      8080/tcp                            cvat
         22c53276da02   postgres:10-alpine     "docker-entrypoint.s…"   10 months ago    Up 5 weeks       5432/tcp                            cvat_db
@@ -91,7 +91,7 @@ https://docs.google.com/presentation/d/1KuyB4PybKUFf2K1E0trbTeiEXR5at_-h/edit?us
         $ echo "Mount from Mac" > ./mount.txt # mount.txtを作成し、「Mount from Mac」を書き込む
         $ cat ./mount.txt # mount.txtの中身を確認
         Mount from Mac
-        $ docker run -v /Users/Ryoka.Oishi/Documents/ncg2022/ncg2022-github-training-1/docker:/tmp --name ngiux-server --rm -d -p 8080:80 nginx:latest
+        $ docker run -v /Users/Ryoka.Oishi/Documents/ncg2022/ncg2022-github-training-1/docker:/tmp --name nginx-server --rm -d -p 8080:80 nginx:latest
         $ docker ps # 起動したか、CONTAINER IDを確認
         $ docker exec -it <CONTAINER_ID> /bin/bash
 
@@ -231,7 +231,7 @@ https://docs.google.com/presentation/d/1KuyB4PybKUFf2K1E0trbTeiEXR5at_-h/edit?us
         $ docker-compose up -d
         ```
 
-        使用するimageイメージがbuild前の場合、起動前にビルドを行う
+        使用するイメージがbuild前の場合、起動前にビルドを行う
         ```
         $ docker-compose build
         ```
