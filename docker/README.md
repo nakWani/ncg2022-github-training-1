@@ -4,7 +4,7 @@ Docker、Docker-composeの使用方法、案件でどのように運用されて
 
 ここではコマンドをメインに取り扱うものとする。スライド資料はコ <!-- ↑ --> コ↓
 
-https://docs.google.com/presentation/d/1KuyB4PybKUFf2K1E0trbTeiEXR5at_-h/edit?usp=sharing&ouid=113382210091580383365&rtpof=true&sd=true
+https://docs.google.com/presentation/d/1Yoi4EZ4HM7NhKYldygVGqhmul72SHdso/edit?usp=sharing&ouid=113382210091580383365&rtpof=true&sd=true
 
 
 ## 講義
@@ -32,7 +32,7 @@ https://docs.google.com/presentation/d/1KuyB4PybKUFf2K1E0trbTeiEXR5at_-h/edit?us
 
         * -d: バックグラウンドで起動する
 
-        * -p: ポートフォワーディング（外部との通信は8080番、内部は80番で通信）
+        * -p: ポートフォワーディング（Macとの通信は8080番、コンテナは80番で通信）
 
         * nginx:latest: <image_name>:<tag>を指定、導入したいコンテナをググって確認する
 
@@ -64,7 +64,6 @@ https://docs.google.com/presentation/d/1KuyB4PybKUFf2K1E0trbTeiEXR5at_-h/edit?us
         $ docker stop 6c254a79a5db # docker stop 6c2　も可
         ```
         1. で作成したコンテナを停止させよう
-
 
         * コンテナ上で任意のコマンドを実行
         ```
