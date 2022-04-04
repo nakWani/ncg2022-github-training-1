@@ -8,6 +8,10 @@ const Intro_3_Text = "\
 \n\
 ## Birthplace\n\
 Shimane\n\
+###Specialties of Shimane\n\
+freshwater clam\n\
+###Shimane's Famous Places\n\
+Izumo Temple\n\
 ## Major subject(University)\n\
 Department of Computer Science and Engineering\n\
 ## Preferred Department\n\
