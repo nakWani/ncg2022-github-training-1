@@ -16,5 +16,7 @@ Izumo Temple\n\
 Department of Computer Science and Engineering\n\
 ## Preferred Department\n\
 Robotics and Drone Section\n\
+### Robots of interest\n\
+Both drones and ground mobile robots\n\
 \n\
 "
