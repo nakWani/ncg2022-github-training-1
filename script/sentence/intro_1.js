@@ -6,7 +6,14 @@
 const Intro_1_Text = "\
 # Yudai.Kataura  \n\
 \n\
-Here is some example **formatting** in _Markdown_.  \n\
+I live 18 minutes on foot from Yashio station. \n\
+I like watching movies, listening music.\n\
 \n\
-The following JavaScript will transform this content to clean HTML.  \n\
+## Movie  \n\
+ * Marvel Cinematic Universe \n\
+ * Kings man \n\
+\n\
+## Music \n\
+ * THE BLUE HEARTS \n\
+ * SEIKIMA II \n\
 "
