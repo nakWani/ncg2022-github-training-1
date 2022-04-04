@@ -114,7 +114,7 @@ https://docs.google.com/presentation/d/1Yoi4EZ4HM7NhKYldygVGqhmul72SHdso/edit?us
 
           1. Dockerfileに独自設定を追加する方法
 
-              Dockerfile、index.phpを作成し、以下の内容を書き込む
+              Dockerfile、test.phpを作成し、以下の内容を書き込む
               ```
               vim Dockerfile
               ```
@@ -125,12 +125,12 @@ https://docs.google.com/presentation/d/1Yoi4EZ4HM7NhKYldygVGqhmul72SHdso/edit?us
               FROM centos:centos7
 
               RUN yum -y install httpd php
-              COPY index.php /var/www/html/
+              COPY test.php /var/www/html/
 
               CMD ["/usr/sbin/httpd","-DFOREGROUND"]
               ```
 
-              * index.php
+              * test.php
               ```
               <html>
                <head>
@@ -159,11 +159,11 @@ https://docs.google.com/presentation/d/1Yoi4EZ4HM7NhKYldygVGqhmul72SHdso/edit?us
               コマンド実行後 http://localhost:8080/test.php にアクセス
 
           2. 起動中のコンテナに設定を追加し、イメージを保存する方法
-              1. で作成したイメージにbashし、/var/www/html/index.phpを書き換える
+              1. で作成したイメージにbashし、/var/www/html/test.phpを書き換える
               ```
               $ docker exec -it <CONTAINER_ID> /bin/bash
-              # sed -i -e "s/Hello Docker/Hello <your name>/g" /var/www/html/index.php ## <your name>に自分の名前を入れよう！
-              # cat /var/www/html/index.php # 書き換わっているか確認
+              # sed -i -e "s/Hello Docker/Hello <your name>/g" /var/www/html/test.php ## <your name>に自分の名前を入れよう！
+              # cat /var/www/html/test.php # 書き換わっているか確認
               # exit
               ```
 
@@ -184,7 +184,7 @@ https://docs.google.com/presentation/d/1Yoi4EZ4HM7NhKYldygVGqhmul72SHdso/edit?us
               $ docker run --name myphpserver --rm -d -p 8080:80 myphpserver:centos7-ryokaoishi
               ```
 
-              コマンド実行後 http://localhost:8080/index.php にアクセス
+              コマンド実行後 http://localhost:8080/test.php にアクセス
 
 
 
