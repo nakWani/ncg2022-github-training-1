@@ -10,7 +10,7 @@ Taku Kitamura \n\
 ## Year \n\
 24 \n\
 ## Hobby \n\
-- Taking a photo \n\
+- Taking a photo with Nikon D610 \n\
 - Programming \n\
 - Running \n\
 ## SNS Acount \n\
