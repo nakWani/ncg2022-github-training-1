@@ -7,6 +7,8 @@ const Intro_2_Text = "\
 # Profile \n\
 ## Name \n\
 Taku Kitamura \n\
+## Birthday \n\
+1998/01/28 \n\
 ## Year \n\
 24 \n\
 ## Hobby \n\
