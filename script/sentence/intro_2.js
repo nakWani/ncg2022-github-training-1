@@ -4,7 +4,7 @@
 /* Plz insert \n\ if you want generate new line.*/
 
 const Intro_2_Text = "\
-# YOUR NAME  \n\
+# Taku Kitamura  \n\
 \n\
 Here is some example **formatting** in _Markdown_.  \n\
 \n\
