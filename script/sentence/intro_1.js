@@ -20,4 +20,6 @@ I like watching movies, listening music.\n\
 ## Music \n\
  * THE BLUE HEARTS \n\
  * SEIKIMA II \n\
+### favorite song of SEIKIMA II\n\
+ * jigoku no ko-taishi \n\
 "
