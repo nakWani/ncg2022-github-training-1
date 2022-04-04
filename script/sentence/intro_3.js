@@ -4,9 +4,19 @@
 /* Plz insert \n\ if you want generate new line.*/
 
 const Intro_3_Text = "\
-# YOUR NAME  \n\
+# Yusuke.Miake  \n\
 \n\
-Here is some example **formatting** in _Markdown_.  \n\
+## Birthplace\n\
+Shimane\n\
+###Specialties of Shimane\n\
+freshwater clam\n\
+###Shimane's Famous Places\n\
+Izumo Temple\n\
+## Major subject(University)\n\
+Department of Computer Science and Engineering\n\
+## Preferred Department\n\
+Robotics and Drone Section\n\
+### Robots of interest\n\
+Both drones and ground mobile robots\n\
 \n\
-The following JavaScript will transform this content to clean HTML.  \n\
 "
