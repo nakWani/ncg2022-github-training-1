@@ -22,7 +22,7 @@ https://docs.google.com/presentation/d/1Yoi4EZ4HM7NhKYldygVGqhmul72SHdso/edit?us
 
         ```
 
-        $ cd ncg2022-github-training-1/docker
+        $ cd ncg2022-github-training-1/docker/docker-training
         $ docker run --name nginx-server --rm -d -p 8080:80 nginx:latest
         ```
 
@@ -65,6 +65,10 @@ https://docs.google.com/presentation/d/1Yoi4EZ4HM7NhKYldygVGqhmul72SHdso/edit?us
         ```
         1. で作成したコンテナを停止させよう
 
+        停止させたら再度起動
+        ```
+        $ docker run --name nginx-server --rm -d -p 8080:80 nginx:latest
+        ```
 
         * コンテナ上で任意のコマンドを実行
         ```
@@ -87,11 +91,11 @@ https://docs.google.com/presentation/d/1Yoi4EZ4HM7NhKYldygVGqhmul72SHdso/edit?us
         * 共有できているか確認する
         ```
         $ pwd
-        /Users/Ryoka.Oishi/Documents/ncg2022/ncg2022-github-training-1/docker
+        /Users/Ryoka.Oishi/Documents/ncg2022/ncg2022-github-training-1/docker/docker-training
         $ echo "Mount from Mac" > ./mount.txt # mount.txtを作成し、「Mount from Mac」を書き込む
         $ cat ./mount.txt # mount.txtの中身を確認
         Mount from Mac
-        $ docker run -v /Users/Ryoka.Oishi/Documents/ncg2022/ncg2022-github-training-1/docker:/tmp --name nginx-server --rm -d -p 8080:80 nginx:latest
+        $ docker run -v /Users/Ryoka.Oishi/Documents/ncg2022/ncg2022-github-training-1/docker/docker-training:/tmp --name nginx-server --rm -d -p 8080:80 nginx:latest
         $ docker ps # 起動したか、CONTAINER IDを確認
         $ docker exec -it <CONTAINER_ID> /bin/bash
 
@@ -195,29 +199,29 @@ https://docs.google.com/presentation/d/1Yoi4EZ4HM7NhKYldygVGqhmul72SHdso/edit?us
         1. docker-compose.yamlファイルを作成し、以下を記入
         ```
         version: '3'
-    
+ 
         services:
-          mysql:
-            image: mysql:8.0.20
+          db:
+            image: mariadb
             restart: always
             environment:
-              MYSQL_ROOT_PASSWORD: wordpress
+              MYSQL_ROOT_PASSWORD: somewordpress
               MYSQL_DATABASE: wordpress
               MYSQL_USER: wordpress
-              MYSQL_PASSWORD: wordpress
-        
+              MYSQL_PASSWORD: wordpress 
+          
           wordpress:
             depends_on:
-              - mysql
+              - db
             image: wordpress:php7.4-apache
             ports:
               - "80:80"
             restart: always
             environment:
-              WORDPRESS_DB_HOST: mysql:3306
+              WORDPRESS_DB_HOST: db:3306
               WORDPRESS_DB_USER: wordpress
               WORDPRESS_DB_PASSWORD: wordpress
-          ```
+        ```
 
         * version: 書き方のフォーマットバージョン（だいだい2か3）
         * services: の下に起動したいコンテナたちを記入する（サービス名という）
@@ -274,24 +278,18 @@ https://docs.google.com/presentation/d/1Yoi4EZ4HM7NhKYldygVGqhmul72SHdso/edit?us
 
 ## 課題
 
-1. 顧客から、Pytorchを動かせるコンテナをDocker Composeで作成してほしいと依頼
+1. 顧客から、Pytorchを動かせるコンテナをDocker Composeで作成してほしいと依頼され、雛形が送られてきたが起動しない。。。
+起動できるようデバッグしよう
+    
 
     ＜条件＞
-
+    
     ```$ docker-compose exec torch bash```  が実行できること
 
     ```$ docker-compose exec torch python3 train.py``` が実行でき、最後にSUCCESS!!!と出力されること
 
-    ncg2022-github-training-x/docker/docker-task/torch内の２つのファイルを修正する
+    作業ディレクトリ ncg2022-github-training-x/docker/docker-task/torch 内の２つのファイルを修正する
     * Dockerfile
-    * Docker-compose.yaml
+    * docker-compose.yaml
 
 2. 好きなDockerイメージを作成する
-
-
-## うまく動かないとき
-
-sudo を付けてみる
-```
-$ sudo docker ps
-```
