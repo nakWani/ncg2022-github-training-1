@@ -12,6 +12,10 @@ I like watching movies, listening music.\n\
 ## Movie  \n\
  * Marvel Cinematic Universe \n\
  * Kings man \n\
+### movie score \n\
+ * Avengers end game : 100 \n\
+ * Spiderman No Way Home : 100 \n\
+ * King man First Agent : 80 \n\
 \n\
 ## Music \n\
  * THE BLUE HEARTS \n\
