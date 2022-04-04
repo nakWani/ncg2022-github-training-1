@@ -14,10 +14,8 @@ Taku Kitamura \n\
 - Programming \n\
 - Running \n\
 ## SNS Acount \n\
-- [Twitter](http://qiita.com \"Qiita Home\") \n\
-- [Qiita](http://qiita.com \"Qiita Home\") \n\ \n\
+- [Twitter](https://twitter.com/takukitamura \"Twitter\") \n\
+- [GitHub](https://github.com/TakuKitamura \"GitHub\") \n\ \n\
+- [YouTube](https://www.youtube.com/channel/UCEodrnwjDL3HjYdfw1tNwjg/videos \"YouTube\") \n\ \n\
 \n\
-Here is some example **formatting** in _Markdown_.  \n\
-\n\
-The following JavaScript will transform this content to clean HTML.  \n\
 "
