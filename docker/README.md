@@ -4,7 +4,7 @@ Docker、Docker-composeの使用方法、案件でどのように運用されて
 
 ここではコマンドをメインに取り扱うものとする。スライド資料はコ <!-- ↑ --> コ↓
 
-https://docs.google.com/presentation/d/1KuyB4PybKUFf2K1E0trbTeiEXR5at_-h/edit?usp=sharing&ouid=113382210091580383365&rtpof=true&sd=true
+https://docs.google.com/presentation/d/1Yoi4EZ4HM7NhKYldygVGqhmul72SHdso/edit?usp=sharing&ouid=113382210091580383365&rtpof=true&sd=true
 
 
 ## 講義
@@ -22,7 +22,7 @@ https://docs.google.com/presentation/d/1KuyB4PybKUFf2K1E0trbTeiEXR5at_-h/edit?us
 
         ```
 
-        $ cd ncg2022-github-training-1/docker
+        $ cd ncg2022-github-training-1/docker/docker-training
         $ docker run --name nginx-server --rm -d -p 8080:80 nginx:latest
         ```
 
@@ -32,7 +32,7 @@ https://docs.google.com/presentation/d/1KuyB4PybKUFf2K1E0trbTeiEXR5at_-h/edit?us
 
         * `-d`: バックグラウンドで起動する
 
-        * `-p`: ポートフォワーディング（外部との通信は8080番、内部は80番で通信）
+        * `-p`: ポートフォワーディング（Macとの通信は8080番、コンテナは80番で通信）
 
         * `nginx:latest`: <image_name>:<tag>を指定、導入したいコンテナをググって確認する
 
@@ -65,6 +65,10 @@ https://docs.google.com/presentation/d/1KuyB4PybKUFf2K1E0trbTeiEXR5at_-h/edit?us
         ```
         1. で作成したコンテナを停止させよう
 
+        停止させたら再度起動
+        ```
+        $ docker run --name nginx-server --rm -d -p 8080:80 nginx:latest
+        ```
 
         * コンテナ上で任意のコマンドを実行
         ```
@@ -87,11 +91,11 @@ https://docs.google.com/presentation/d/1KuyB4PybKUFf2K1E0trbTeiEXR5at_-h/edit?us
         * 共有できているか確認する
         ```
         $ pwd
-        /Users/Ryoka.Oishi/Documents/ncg2022/ncg2022-github-training-1/docker
+        /Users/Ryoka.Oishi/Documents/ncg2022/ncg2022-github-training-1/docker/docker-training
         $ echo "Mount from Mac" > ./mount.txt # mount.txtを作成し、「Mount from Mac」を書き込む
         $ cat ./mount.txt # mount.txtの中身を確認
         Mount from Mac
-        $ docker run -v /Users/Ryoka.Oishi/Documents/ncg2022/ncg2022-github-training-1/docker:/tmp --name nginx-server --rm -d -p 8080:80 nginx:latest
+        $ docker run -v /Users/Ryoka.Oishi/Documents/ncg2022/ncg2022-github-training-1/docker/docker-training:/tmp --name nginx-server --rm -d -p 8080:80 nginx:latest
         $ docker ps # 起動したか、CONTAINER IDを確認
         $ docker exec -it <CONTAINER_ID> /bin/bash
 
@@ -110,7 +114,7 @@ https://docs.google.com/presentation/d/1KuyB4PybKUFf2K1E0trbTeiEXR5at_-h/edit?us
 
           1. Dockerfileに独自設定を追加する方法
 
-              Dockerfile、index.phpを作成し、以下の内容を書き込む
+              Dockerfile、test.phpを作成し、以下の内容を書き込む
               ```
               vim Dockerfile
               ```
@@ -121,12 +125,12 @@ https://docs.google.com/presentation/d/1KuyB4PybKUFf2K1E0trbTeiEXR5at_-h/edit?us
               FROM centos:centos7
 
               RUN yum -y install httpd php
-              COPY index.php /var/www/html/
+              COPY test.php /var/www/html/
 
               CMD ["/usr/sbin/httpd","-DFOREGROUND"]
               ```
 
-              * index.php
+              * test.php
               ```
               <html>
                <head>
@@ -155,11 +159,11 @@ https://docs.google.com/presentation/d/1KuyB4PybKUFf2K1E0trbTeiEXR5at_-h/edit?us
               コマンド実行後 http://localhost:8080/test.php にアクセス
 
           2. 起動中のコンテナに設定を追加し、イメージを保存する方法
-              1. で作成したイメージにbashし、/var/www/html/index.phpを書き換える
+              1. で作成したイメージにbashし、/var/www/html/test.phpを書き換える
               ```
               $ docker exec -it <CONTAINER_ID> /bin/bash
-              # sed -i -e "s/Hello Docker/Hello <your name>/g" /var/www/html/index.php ## <your name>に自分の名前を入れよう！
-              # cat /var/www/html/index.php # 書き換わっているか確認
+              # sed -i -e "s/Hello Docker/Hello <your name>/g" /var/www/html/test.php ## <your name>に自分の名前を入れよう！
+              # cat /var/www/html/test.php # 書き換わっているか確認
               # exit
               ```
 
@@ -180,7 +184,7 @@ https://docs.google.com/presentation/d/1KuyB4PybKUFf2K1E0trbTeiEXR5at_-h/edit?us
               $ docker run --name myphpserver --rm -d -p 8080:80 myphpserver:centos7-ryokaoishi
               ```
 
-              コマンド実行後 http://localhost:8080/index.php にアクセス
+              コマンド実行後 http://localhost:8080/test.php にアクセス
 
 
 
@@ -195,29 +199,29 @@ https://docs.google.com/presentation/d/1KuyB4PybKUFf2K1E0trbTeiEXR5at_-h/edit?us
         1. docker-compose.yamlファイルを作成し、以下を記入
         ```
         version: '3'
-    
+ 
         services:
-          mysql:
-            image: mysql:8.0.20
+          db:
+            image: mariadb
             restart: always
             environment:
-              MYSQL_ROOT_PASSWORD: wordpress
+              MYSQL_ROOT_PASSWORD: somewordpress
               MYSQL_DATABASE: wordpress
               MYSQL_USER: wordpress
-              MYSQL_PASSWORD: wordpress
-        
+              MYSQL_PASSWORD: wordpress 
+          
           wordpress:
             depends_on:
-              - mysql
+              - db
             image: wordpress:php7.4-apache
             ports:
               - "80:80"
             restart: always
             environment:
-              WORDPRESS_DB_HOST: mysql:3306
+              WORDPRESS_DB_HOST: db:3306
               WORDPRESS_DB_USER: wordpress
               WORDPRESS_DB_PASSWORD: wordpress
-          ```
+        ```
 
         * version: 書き方のフォーマットバージョン（だいだい2か3）
         * services: の下に起動したいコンテナたちを記入する（サービス名という）
@@ -274,24 +278,18 @@ https://docs.google.com/presentation/d/1KuyB4PybKUFf2K1E0trbTeiEXR5at_-h/edit?us
 
 ## 課題
 
-1. 顧客から、Pytorchを動かせるコンテナをDocker Composeで作成してほしいと依頼
+1. 顧客から、Pytorchを動かせるコンテナをDocker Composeで作成してほしいと依頼され、雛形が送られてきたが起動しない。。。
+起動できるようデバッグしよう
+    
 
     ＜条件＞
-
+    
     ```$ docker-compose exec torch bash```  が実行できること
 
     ```$ docker-compose exec torch python3 train.py``` が実行でき、最後にSUCCESS!!!と出力されること
 
-    ncg2022-github-training-x/docker/docker-task/torch内の２つのファイルを修正する
+    作業ディレクトリ ncg2022-github-training-x/docker/docker-task/torch 内の２つのファイルを修正する
     * Dockerfile
-    * Docker-compose.yaml
+    * docker-compose.yaml
 
 2. 好きなDockerイメージを作成する
-
-
-## うまく動かないとき
-
-sudo を付けてみる
-```
-$ sudo docker ps
-```
