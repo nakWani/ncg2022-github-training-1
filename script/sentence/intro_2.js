@@ -4,7 +4,18 @@
 /* Plz insert \n\ if you want generate new line.*/
 
 const Intro_2_Text = "\
-# YOUR NAME  \n\
+# Profile \n\
+## Name \n\
+Taku Kitamura \n\
+## Year \n\
+24 \n\
+## Hobby \n\
+- Taking a photo \n\
+- Programming \n\
+- Running \n\
+## SNS Acount \n\
+- [Twitter](http://qiita.com \"Qiita Home\") \n\
+- [Qiita](http://qiita.com \"Qiita Home\") \n\ \n\
 \n\
 Here is some example **formatting** in _Markdown_.  \n\
 \n\
