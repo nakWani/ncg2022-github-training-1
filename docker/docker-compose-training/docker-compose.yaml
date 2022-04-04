@@ -12,7 +12,7 @@ services:
   
   wordpress:
     depends_on:
-      - mysql
+      - db
     image: wordpress:php7.4-apache
     ports:
       - "80:80"
